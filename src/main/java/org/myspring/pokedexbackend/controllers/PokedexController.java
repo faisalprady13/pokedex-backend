@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class PokodexController {
+public class PokedexController {
 
     private final PokedexService pokedexService;
 
