@@ -5,22 +5,18 @@ import lombok.RequiredArgsConstructor;
 import org.myspring.pokedexbackend.dtos.base.FavoriteDTO;
 import org.myspring.pokedexbackend.models.Pokemon;
 import org.myspring.pokedexbackend.services.PokedexService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/pokemon")
 @RequiredArgsConstructor
 public class PokedexController {
 
     private final PokedexService pokedexService;
 
-    @GetMapping("/pokemon/{name}")
-    public Pokemon getPokemonByName(@PathVariable String name) {
-        return pokedexService.getPokemonByName(name);
-    }
-
-    @PostMapping("/collection")
-    public Pokemon createFavoritePokemon(@RequestBody @Valid FavoriteDTO favoriteDTO) {
-        return pokedexService.createFavoritePokemon(favoriteDTO);
+    @GetMapping("/{name}")
+    public ResponseEntity<Pokemon> getPokemonByName(@PathVariable String name) {
+        return ResponseEntity.accepted().body(pokedexService.getPokemonByName(name));
     }
 }

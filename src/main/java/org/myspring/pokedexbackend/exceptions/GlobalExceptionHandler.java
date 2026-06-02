@@ -27,12 +27,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ErrorMessage(ex.getMessage());
     }
 
+    @ExceptionHandler(CollectionEntryNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorMessage handleCollectionEntryNotFoundException(CollectionEntryNotFoundException ex) {
+        return new ErrorMessage(ex.getMessage());
+    }
+
     @Override
     protected @Nullable ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                             @NonNull HttpHeaders headers,
                                                                             @NonNull HttpStatusCode status,
                                                                             @NonNull WebRequest request) {
-        
+
         Map<String, String> validationErrors = new HashMap<>();
 
         List<FieldError> allErrors = ex.getBindingResult().getFieldErrors();

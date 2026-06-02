@@ -59,4 +59,17 @@ public record Pokemon(
                 types
         );
     }
+
+
+    public Pokemon(Pokemon pokemon, String nickname) {
+        this(pokemon.id,
+                pokemon.pokemonId,
+                nickname,
+                pokemon.pokemonName,
+                pokemon.pictureUrl,
+                pokemon.height,
+                pokemon.weight,
+                pokemon.types
+        );
+    }
 }
