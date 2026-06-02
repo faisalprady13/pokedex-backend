@@ -2,6 +2,7 @@ package org.myspring.pokedexbackend.services;
 
 import lombok.RequiredArgsConstructor;
 import org.myspring.pokedexbackend.dtos.api.PokemonApiDTO;
+import org.myspring.pokedexbackend.dtos.base.FavoriteDTO;
 import org.myspring.pokedexbackend.models.Pokemon;
 import org.myspring.pokedexbackend.repositories.PokedexRepository;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,11 @@ public class PokedexService {
     public Pokemon getPokemonByName(String name) {
         PokemonApiDTO pokemonApiDTO = pokemonApiClient.getPokemonByName(name);
         return new Pokemon(pokemonApiDTO);
+    }
+
+    public Pokemon createFavoritePokemon(FavoriteDTO favoriteDTO) {
+        PokemonApiDTO pokemonApiDTO = pokemonApiClient.getPokemonByName(favoriteDTO.pokemonName());
+        Pokemon pokemon = new Pokemon(pokemonApiDTO, favoriteDTO.nickname());
+        return pokedexRepository.save(pokemon);
     }
 }
