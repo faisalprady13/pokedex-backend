@@ -25,7 +25,7 @@ public record Pokemon(
 ) {
 
     public Pokemon(PokemonApiDTO pokemonApiDTO) {
-        List<String> types = pokemonApiDTO.types() == null ? null : Arrays.stream(pokemonApiDTO.types())
+        List<String> types = pokemonApiDTO.types() == null ? null : pokemonApiDTO.types().stream()
                 .map(TypeApiDTO::type)
                 .map(TypeDetailApiDTO::name)
                 .toList();
@@ -43,7 +43,7 @@ public record Pokemon(
     }
 
     public Pokemon(PokemonApiDTO pokemonApiDTO, String nickname) {
-        List<String> types = pokemonApiDTO.types() == null ? null : Arrays.stream(pokemonApiDTO.types())
+        List<String> types = pokemonApiDTO.types() == null ? null : pokemonApiDTO.types().stream()
                 .map(TypeApiDTO::type)
                 .map(TypeDetailApiDTO::name)
                 .toList();

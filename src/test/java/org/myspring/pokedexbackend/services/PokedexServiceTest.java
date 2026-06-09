@@ -12,6 +12,7 @@ import org.myspring.pokedexbackend.dtos.base.FavoriteDTO;
 import org.myspring.pokedexbackend.dtos.base.NicknameDTO;
 import org.myspring.pokedexbackend.models.Pokemon;
 import org.myspring.pokedexbackend.repositories.PokedexRepository;
+import org.springframework.web.client.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
